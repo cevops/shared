@@ -6,6 +6,8 @@ type ShowFunc func(s ssh.Session, idx int, items []*MenuItem) bool              
 type GetSubMenuFunc func(s ssh.Session, idx int, items []*MenuItem) []*MenuItem // 获取子菜单
 type SelectedFunc func(s ssh.Session, idx int, items []*MenuItem) error         // 选择子菜单
 
+func DefaultShow(s ssh.Session, idx int, items []*MenuItem) bool { return true }
+
 type MenuItem struct {
 	Name              string         // 插件名
 	ShowFunc          ShowFunc       // 控制是否显示插件
@@ -17,5 +19,3 @@ type MenuItem struct {
 	BackAfterSelected bool           // 选择后是否返回
 	BackOptionLabel   string         // 返回的标签
 }
-
-func DefaultShow(s ssh.Session, idx int, items []*MenuItem) bool { return true }
